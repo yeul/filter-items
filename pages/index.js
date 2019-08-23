@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { foods } from "../data/data";
+import "../styles/main.scss";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,10 +25,14 @@ class App extends React.Component {
   /**
    *
    * @description
-   * Maps over the array on the state and returns DIVs with the food.name
+   * Maps over the array on the state and returns LIs with the food.name
    */
   filteredList() {
-    return this.state.filter.map(food => <div key={food.id}>{food.name}</div>);
+    return this.state.filter.map(food => (
+      <li key={food.id} className='games-li'>
+        {food.name}
+      </li>
+    ));
   }
 
   /**
@@ -39,19 +44,37 @@ class App extends React.Component {
    * array of foods to the state.
    *
    * filteredList maps over the state.filter array of foods and returns
-   * them as DIVs with the food.name in it.
+   * them as LIs with the food.name in it.
    */
   render() {
     console.log(this.state);
     return (
       <Fragment>
-        <button value='fruit' className='btn-primary fruits' onClick={e => this.buttonClicked(e)}>
-          Froots
-        </button>
-        <button value='vegetable' className='btn-primary fruits' onClick={e => this.buttonClicked(e)}>
-          Vergtables
-        </button>
-        {this.filteredList()}
+        <div className='outer-container container-fluid'>
+          <div className='inner-container container-fluid'>
+            <div className='sidebar-container'>
+              <div className='sidebar-btn-row row no-gutters'>
+                <div className='col-lg-12'>
+                  <button value='fruit' className='filter-btn fruits' onClick={e => this.buttonClicked(e)}>
+                    Froots
+                  </button>
+                </div>
+              </div>
+              <div className='sidebar-btn-row row no-gutters'>
+                <div className='col-lg-12'>
+                  <button value='vegetable' className='filter-btn fruits' onClick={e => this.buttonClicked(e)}>
+                    Vergtables
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className='games-content-row row no-gutters'>
+              <div className='games-content-col col-lg-12'>
+                <ul className='games-ul'>{this.filteredList()}</ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </Fragment>
     );
   }
