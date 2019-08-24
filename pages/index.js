@@ -53,6 +53,11 @@ class App extends React.Component {
         <div className='outer-container container-fluid'>
           <div className='inner-container container-fluid'>
             <div className='sidebar-container'>
+              <div className='row no-gutters'>
+                <div className='col-lg-12'>
+                  <h1 className='site-name-header'>Gamepack</h1>
+                </div>
+              </div>
               <div className='sidebar-btn-row row no-gutters'>
                 <div className='col-lg-12'>
                   <button value='fruit' className='filter-btn fruits' onClick={e => this.buttonClicked(e)}>
@@ -70,7 +75,9 @@ class App extends React.Component {
             </div>
             <div className='games-content-row row no-gutters'>
               <div className='games-content-col col-lg-12'>
-                <ul className='games-ul'>{this.filteredList()}</ul>
+                <div className='game-card'>
+                  <ul className='games-ul'>{this.filteredList()}</ul>
+                </div>
               </div>
             </div>
           </div>

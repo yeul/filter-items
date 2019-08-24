@@ -1,11 +1,13 @@
+body {
+  font-family: "BrutalType-Regular";
+}
+
 .outer-container {
   display: flex;
   height: 100vh;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: #41489a;
-  background-image: linear-gradient(180deg, #63419a 0%, #2c2144 74%);
-  // background: rgb(82, 5, 155);
+  background-color: #3e098d;
 
   .inner-container {
     display: flex;
@@ -15,17 +17,15 @@
     margin-bottom: 100px;
     padding-left: 0px;
     padding-right: 0px;
-    background: rgb(48, 47, 47);
+    background: #202020;
+    color: white;
 
     .sidebar-container {
-      padding-right: 200px;
-      background: rgb(39, 38, 39);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 20%;
+      background: #121212;
     }
   }
 }
-
-// #363E83
-// #242844
-
-// background-color: #41489a;
-// background-image: linear-gradient(180deg, #41489a 0%, #242844 74%);
