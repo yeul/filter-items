@@ -1,12 +1,13 @@
 import React, { Fragment } from "react";
-import { foods } from "../data/data";
+import { games } from "../data/games";
 import "../styles/main.scss";
+import Card from "../components/Card";
 // import Card from "../components/Card";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { filter: foods, clicked: false };
+    this.state = { filter: games, clicked: false };
     this.buttonClicked = this.buttonClicked.bind(this);
     this.filteredList = this.filteredList.bind(this);
   }
@@ -19,11 +20,11 @@ class App extends React.Component {
    */
   buttonClicked(e) {
     console.log(e.target.value);
-    console.log(foods.filter(food => food.type === e.target.value));
+    console.log(games.filter(game => game.genre === e.target.value));
     if (e.target.value === "show-all") {
-      this.setState({ filter: foods });
+      this.setState({ filter: games });
     } else {
-      this.setState({ filter: foods.filter(food => food.type === e.target.value) });
+      this.setState({ filter: games.filter(game => game.genre === e.target.value) });
     }
   }
 
@@ -33,11 +34,7 @@ class App extends React.Component {
    * Maps over the array on the state and returns LIs with the food.name
    */
   filteredList() {
-    return this.state.filter.map(food => (
-      <li key={food.id} className='games-li'>
-        {food.name}
-      </li>
-    ));
+    return this.state.filter.map(game => <Card className='games-li' gameName={game.name} />);
   }
 
   /**
@@ -57,7 +54,50 @@ class App extends React.Component {
       <Fragment>
         <div className='outer-container container-fluid'>
           <div className='inner-container container-fluid'>
-            <div className='sidebar-container'>
+            <div className='inner-container-row row no-gutters'>
+              <div className='inner-container-col col-lg-12'>
+                <div className='inner-container-row row no-gutters'>
+                  <div className='sidebar-col col-lg-2'>
+                    <div className='row no-gutters'>
+                      <div className='col-lg-12'>
+                        <h1 className='site-name-header'>Gamepack</h1>
+                      </div>
+                    </div>
+                    <div className='sidebar-btn-row row no-gutters'>
+                      <div className='col-lg-12'>
+                        <button value='RPG' className='filter-btn' onClick={e => this.buttonClicked(e)}>
+                          RPG
+                        </button>
+                      </div>
+                    </div>
+                    <div className='sidebar-btn-row row no-gutters'>
+                      <div className='col-lg-12'>
+                        <button value='Action-Adventure' className='filter-btn' onClick={e => this.buttonClicked(e)}>
+                          Action-Adventure
+                        </button>
+                      </div>
+                    </div>
+                    <div className='sidebar-btn-row row no-gutters'>
+                      <div className='col-lg-12'>
+                        <button value='show-all' className='filter-btn' onClick={e => this.buttonClicked(e)}>
+                          Show All
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='games-container-col col-lg-10'>
+                    <div className='games-content-row row no-gutters'>
+                      {/* <div className='game-card'> */}
+                      {/* <ul className='games-ul'>{this.filteredList()}</ul> */}
+                      {this.filteredList()}
+
+                      {/* </div> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <div className='sidebar-container container-fluid'>
               <div className='row no-gutters'>
                 <div className='col-lg-12'>
                   <h1 className='site-name-header'>Gamepack</h1>
@@ -84,14 +124,23 @@ class App extends React.Component {
                   </button>
                 </div>
               </div>
-            </div>
-            <div className='games-content-row row no-gutters'>
-              <div className='games-content-col col-lg-12'>
-                <div className='game-card'>
-                  <ul className='games-ul'>{this.filteredList()}</ul>
+            </div> */}
+            {/* <div className='games-content-container container-fluid'>
+              <div className='games-content-row row no-gutters'>
+                <div className='games-content-col col-lg-12'>
+                  <div className='game-card'>
+                    <ul className='games-ul'>{this.filteredList()}</ul>
+                  </div>
                 </div>
               </div>
-            </div>
+              <div className='games-content-row row no-gutters'>
+                <div className='games-content-col col-lg-12'>
+                  <div className='game-card'>
+                    <ul className='games-ul'>{this.filteredList()}</ul>
+                  </div>
+                </div>
+              </div>
+            </div> */}
           </div>
         </div>
       </Fragment>

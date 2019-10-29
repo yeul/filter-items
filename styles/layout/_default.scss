@@ -4,6 +4,7 @@ body {
 
 .outer-container {
   display: flex;
+  flex: 0 1 auto;
   height: 100vh;
   padding-left: 0px;
   padding-right: 0px;
@@ -11,6 +12,7 @@ body {
 
   .inner-container {
     display: flex;
+    flex: 0 1 auto;
     margin-left: 200px;
     margin-right: 200px;
     margin-top: 100px;
@@ -20,12 +22,26 @@ body {
     background: #202020;
     color: white;
 
-    .sidebar-container {
+    .inner-container-row {
+      width: 100%;
+      height: 100%;
+    }
+    .sidebar-col {
       display: flex;
+      flex: 0 1 auto;
       flex-direction: column;
       align-items: center;
-      width: 20%;
       background: #121212;
     }
+
+    .games-container-col {
+      overflow-y: scroll;
+    }
+  }
+
+  .inner-container-col,
+  .sidebar-col,
+  .games-container-col {
+    height: 100%;
   }
 }
