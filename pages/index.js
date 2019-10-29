@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { foods } from "../data/data";
 import "../styles/main.scss";
+// import Card from "../components/Card";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,7 +20,11 @@ class App extends React.Component {
   buttonClicked(e) {
     console.log(e.target.value);
     console.log(foods.filter(food => food.type === e.target.value));
-    this.setState({ filter: foods.filter(food => food.type === e.target.value) });
+    if (e.target.value === "show-all") {
+      this.setState({ filter: foods });
+    } else {
+      this.setState({ filter: foods.filter(food => food.type === e.target.value) });
+    }
   }
 
   /**
@@ -60,15 +65,22 @@ class App extends React.Component {
               </div>
               <div className='sidebar-btn-row row no-gutters'>
                 <div className='col-lg-12'>
-                  <button value='fruit' className='filter-btn fruits' onClick={e => this.buttonClicked(e)}>
+                  <button value='fruit' className='filter-btn' onClick={e => this.buttonClicked(e)}>
                     Froots
                   </button>
                 </div>
               </div>
               <div className='sidebar-btn-row row no-gutters'>
                 <div className='col-lg-12'>
-                  <button value='vegetable' className='filter-btn fruits' onClick={e => this.buttonClicked(e)}>
+                  <button value='vegetable' className='filter-btn' onClick={e => this.buttonClicked(e)}>
                     Vergtables
+                  </button>
+                </div>
+              </div>
+              <div className='sidebar-btn-row row no-gutters'>
+                <div className='col-lg-12'>
+                  <button value='show-all' className='filter-btn' onClick={e => this.buttonClicked(e)}>
+                    Show All
                   </button>
                 </div>
               </div>
