@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { games } from "../data/games";
 import "../styles/main.scss";
 import Card from "../components/Card";
-// import Card from "../components/Card";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,7 +33,7 @@ class App extends React.Component {
    * Maps over the array on the state and returns LIs with the food.name
    */
   filteredList() {
-    return this.state.filter.map(game => <Card className='games-li' gameName={game.name} />);
+    return this.state.filter.map(game => <Card className='games-li' gameImage={game.image} />);
   }
 
   /**
@@ -57,10 +56,32 @@ class App extends React.Component {
             <div className='inner-container-row row no-gutters'>
               <div className='inner-container-col col-lg-12'>
                 <div className='inner-container-row row no-gutters'>
-                  <div className='sidebar-col col-lg-2'>
+                  <div className='sidebar-col col-lg-3'>
                     <div className='row no-gutters'>
                       <div className='col-lg-12'>
                         <h1 className='site-name-header'>Gamepack</h1>
+                      </div>
+                    </div>
+                    <div className='sidebar-btn-row row no-gutters'>
+                      <div className='col-lg-12'>
+                        <button value='Action-Adventure' className='filter-btn' onClick={e => this.buttonClicked(e)}>
+                          Action-Adventure
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className='sidebar-btn-row row no-gutters'>
+                      <div className='col-lg-12'>
+                        <button value='Puzzle' className='filter-btn' onClick={e => this.buttonClicked(e)}>
+                          Puzzle
+                        </button>
+                      </div>
+                    </div>
+                    <div className='sidebar-btn-row row no-gutters'>
+                      <div className='col-lg-12'>
+                        <button value='Racing' className='filter-btn' onClick={e => this.buttonClicked(e)}>
+                          Racing
+                        </button>
                       </div>
                     </div>
                     <div className='sidebar-btn-row row no-gutters'>
@@ -72,8 +93,15 @@ class App extends React.Component {
                     </div>
                     <div className='sidebar-btn-row row no-gutters'>
                       <div className='col-lg-12'>
-                        <button value='Action-Adventure' className='filter-btn' onClick={e => this.buttonClicked(e)}>
-                          Action-Adventure
+                        <button value='Simulation' className='filter-btn' onClick={e => this.buttonClicked(e)}>
+                          Simulation
+                        </button>
+                      </div>
+                    </div>
+                    <div className='sidebar-btn-row row no-gutters'>
+                      <div className='col-lg-12'>
+                        <button value='Survival' className='filter-btn' onClick={e => this.buttonClicked(e)}>
+                          Survival
                         </button>
                       </div>
                     </div>
@@ -85,62 +113,12 @@ class App extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div className='games-container-col col-lg-10'>
-                    <div className='games-content-row row no-gutters'>
-                      {/* <div className='game-card'> */}
-                      {/* <ul className='games-ul'>{this.filteredList()}</ul> */}
-                      {this.filteredList()}
-
-                      {/* </div> */}
-                    </div>
+                  <div className='games-container-col col-lg-9'>
+                    <div className='games-content-row row no-gutters'>{this.filteredList()}</div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* <div className='sidebar-container container-fluid'>
-              <div className='row no-gutters'>
-                <div className='col-lg-12'>
-                  <h1 className='site-name-header'>Gamepack</h1>
-                </div>
-              </div>
-              <div className='sidebar-btn-row row no-gutters'>
-                <div className='col-lg-12'>
-                  <button value='fruit' className='filter-btn' onClick={e => this.buttonClicked(e)}>
-                    Froots
-                  </button>
-                </div>
-              </div>
-              <div className='sidebar-btn-row row no-gutters'>
-                <div className='col-lg-12'>
-                  <button value='vegetable' className='filter-btn' onClick={e => this.buttonClicked(e)}>
-                    Vergtables
-                  </button>
-                </div>
-              </div>
-              <div className='sidebar-btn-row row no-gutters'>
-                <div className='col-lg-12'>
-                  <button value='show-all' className='filter-btn' onClick={e => this.buttonClicked(e)}>
-                    Show All
-                  </button>
-                </div>
-              </div>
-            </div> */}
-            {/* <div className='games-content-container container-fluid'>
-              <div className='games-content-row row no-gutters'>
-                <div className='games-content-col col-lg-12'>
-                  <div className='game-card'>
-                    <ul className='games-ul'>{this.filteredList()}</ul>
-                  </div>
-                </div>
-              </div>
-              <div className='games-content-row row no-gutters'>
-                <div className='games-content-col col-lg-12'>
-                  <div className='game-card'>
-                    <ul className='games-ul'>{this.filteredList()}</ul>
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </Fragment>

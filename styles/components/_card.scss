@@ -1,9 +1,11 @@
 .games-content-row {
   display: flex;
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   flex-wrap: wrap;
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
 }
 
 .game-card-div {
