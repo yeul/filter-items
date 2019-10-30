@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { games } from "../data/games";
-import "../styles/main.scss";
 import Card from "../components/Card";
 
 class App extends React.Component {
@@ -14,8 +13,9 @@ class App extends React.Component {
   /**
    *
    * @description
-   * Filters the "foods" array by comparing the food type against the value of the clicked button.
+   * Filters the "games" array by comparing the game genre against the value of the clicked button.
    * Then takes that filtered array and sets it to state.
+   * If the value of the button is "show all", it will return all of the game items.
    */
   buttonClicked(e) {
     console.log(e.target.value);
@@ -30,7 +30,7 @@ class App extends React.Component {
   /**
    *
    * @description
-   * Maps over the array on the state and returns LIs with the food.name
+   * Maps over the array on the state and returns Card component with the game.image.
    */
   filteredList() {
     return this.state.filter.map(game => <Card className='games-li' gameImage={game.image} />);
@@ -40,12 +40,12 @@ class App extends React.Component {
    *
    * @description
    * The idea of this is for you to be able to click on a button,
-   * send the value into buttonClicked, then filter the foods based
+   * send the value into buttonClicked, then filter the games based
    * off of the value. Next in buttonClicked is to set the filtered
-   * array of foods to the state.
+   * array of games to the state.
    *
-   * filteredList maps over the state.filter array of foods and returns
-   * them as LIs with the food.name in it.
+   * filteredList maps over the state.filter array of games and returns
+   * them as Card components with the game.image in it.
    */
   render() {
     console.log(this.state);
